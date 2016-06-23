@@ -21,10 +21,12 @@ class DetalleViewController: UIViewController {
         
         datosLibro.text = "Tìtulo: " + (detalleLibro[0] as! String) + "\n"
         
-        if detalleLibro.count > 2 {
+        if detalleLibro.count > 3 {
             portadaLibro.image = UIImage(data: detalleLibro[1] as! NSData)
-            datosLibro.text =  datosLibro.text! + "Autores: " + (detalleLibro[2] as! String)
+            datosLibro.text = datosLibro.text! + "ISBN: " + (detalleLibro[3] as! String) + "\n"
+            datosLibro.text = datosLibro.text! + "Autores: " + (detalleLibro[2] as! String)
         } else {
+            datosLibro.text = datosLibro.text! + "ISBN: " + (detalleLibro[2] as! String) + "\n"
             datosLibro.text =  datosLibro.text! + "Autores: " + (detalleLibro[1] as! String)
         }
     }

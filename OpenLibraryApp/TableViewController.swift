@@ -86,11 +86,13 @@ class TableViewController: UITableViewController {
             let item = NSManagedObject(entity: libro!, insertIntoManagedObjectContext: managedContext)
 
             item.setValue(itemToSave[0], forKey: "titulo")
-            if itemToSave.count > 2 {
+            if itemToSave.count > 3 {
                 item.setValue(itemToSave[1], forKey: "portada")
                 item.setValue(itemToSave[2], forKey: "autores")
+                item.setValue(itemToSave[3], forKey: "isbn")
             } else {
                 item.setValue(itemToSave[1], forKey: "autores")
+                item.setValue(itemToSave[2], forKey: "isbn")
             }
             
             do {
@@ -253,6 +255,7 @@ class TableViewController: UITableViewController {
         }catch {
             errorAlert("Por favor revisa tu conexión a Internet.")
         }
+        resultado.append(textoISBN)
         return resultado
     }
     
@@ -281,6 +284,7 @@ class TableViewController: UITableViewController {
             detalleLibro.append((item.valueForKey("portada") as? NSData)!)
         }
         detalleLibro.append((item.valueForKey("autores") as? String)!)
+        detalleLibro.append((item.valueForKey("isbn") as? String)!)
         
         sigVista.detalleLibro = detalleLibro
     }
